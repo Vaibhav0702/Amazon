@@ -1,0 +1,140 @@
+
+.banner_img{
+
+width: 100vw;
+
+height: 700px;
+
+
+}
+
+
+.carasousel{
+
+    margin-top: 10;
+}
+
+
+@media (max-width:768px){
+    .banner_img{
+        object-fit: cover;
+      
+    }
+}
+
+
+.BboxUR{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 4;
+}
+
+.BboxUL1G{
+    display: grid;
+    gap: 10px;
+    /* border: 1px solid red; */
+    grid-template-columns: repeat(2,1fr);
+}
+
+.BboxUL1G > div{
+    background-color: white;
+    padding-top: 0px;
+    /* border: 1px solid orange; */
+}
+.BboxUL1G > div> img{
+ 
+    border: 1px solid;
+    width: 80%;
+
+}
+
+.BboxU{
+    display: flex;
+    gap: 20px;
+    /* border: 1px solid blue; */
+    padding: 10px;
+    margin-top: -430px;
+    z-index: 1;
+    position: relative;
+}
+
+
+.BboxL{
+    display: flex;
+    gap: 20px;
+    /* border: 1px solid blue; */
+    padding: 10px;
+    margin-top: -50px;
+    z-index: 1;
+    position: relative;
+}
+
+.BboxLR{
+
+    width: 90%;
+
+    /* height: 370px; */
+    /* border: 1px solid red; */
+    text-align: center;
+   
+}
+
+.BboxLR > img{
+   
+    width: 100%;
+   
+}
+
+
+
+.BboxUL{
+    display: flex;
+    /* border: 1px solid green; */
+    gap: 20px;
+   padding: 10px;
+ 
+}
+
+.BboxUL1{
+    background-color: white;
+  
+   padding-left: 20px ;
+   padding-right: 20px;
+   /* border: 1px solid ; */
+    margin-bottom: 35px;
+   
+}
+
+.BboxURU{
+    background-color: white;
+    padding: 0px 20px 5px 20px;
+    /* border: 1px solid brown; */
+}
+
+.BboxUR{
+    padding: 10px;
+}
+
+.BboxURL > img{
+  
+    margin: 5px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+
+}
+
+
+.Bboxa{
+
+    color: rgb(190,219,224);
+    text-decoration: none;
+   
+}
+
+
+.Bboxa:hover{
+
+    color: red;
+    cursor: pointer;
+}
