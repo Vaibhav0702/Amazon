@@ -1,3 +1,7 @@
+
+
+
+
 export const getProducts = () => async (dispatch) => {
   try {
     const data = await fetch("/getproducts", {
