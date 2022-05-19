@@ -13,7 +13,7 @@ router.get("/getproducts" , async(req,res) => {
     {
         const productsData = await Products.find().lean().exec();
         
-       return res.status(200).send(json(productsData))
+       return res.status(200).json(productsData);
     }
     catch(err)
     {
@@ -21,6 +21,34 @@ router.get("/getproducts" , async(req,res) => {
         return res.status(500).send({ msg : err.message});
       
     }
+});
+
+
+// get data by id 
+
+
+router.get("/product/:id" , async(req,res) => {
+
+
+    try
+    {
+        const {id} = req.params;
+        // console.log(id);
+
+        const singleProduct = await Products.findOne({id:id});
+
+        console.log(singleProduct)
+
+    }
+    catch(err)
+    {
+
+    }
+
+
+
+
+
 })
 
 

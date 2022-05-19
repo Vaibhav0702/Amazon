@@ -10,7 +10,7 @@ import Carousel from 'react-multi-carousel';
 
 import 'react-multi-carousel/lib/styles.css';
 
-import { products } from './Productdata';
+// import { products } from './Productdata';  // local data
 
 import { Divider } from "@mui/material"
 
@@ -39,7 +39,7 @@ const responsive = {
 
 
 
-const Slide = ({title}) => {
+const Slide = ({ title, products }) => {
 
     return (
 

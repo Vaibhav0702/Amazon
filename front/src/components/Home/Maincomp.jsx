@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Banner from './Banner';
 
@@ -7,8 +7,27 @@ import "./Home.css";
 
 import Slide from './Slide';
 
+
+import { getProducts } from "../Redux/action/action"
+
+import { useDispatch, useSelector } from "react-redux";
+
+
 const Maincomp = () => {
 
+
+    const { products } = useSelector(state => state.getProductsData);
+
+
+    console.log(products);
+
+
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch])
 
 
     return (
@@ -25,7 +44,7 @@ const Maincomp = () => {
 
 
                 <div className="left_slide">
-                    <Slide title = "Deal Of The Day" />
+                    <Slide title="Deal Of The Day" products={products} />
                 </div>
 
 
@@ -42,18 +61,18 @@ const Maincomp = () => {
 
 
 
-           <Slide title = "Today's Deal" />
+            <Slide title="Today's Deal" products={products} />
 
-           <div className="center_img">
+            <div className="center_img">
 
-               <img src="https://m.media-amazon.com/images/G/31/AMS/IN/970X250-_desktop_banner.jpg" alt="" />
-           </div>
-
-
-           <Slide title = "Best Seller" />
+                <img src="https://m.media-amazon.com/images/G/31/AMS/IN/970X250-_desktop_banner.jpg" alt="" />
+            </div>
 
 
-           <Slide title = "Upto 80% off" />
+            <Slide title="Best Seller" products={products} />
+
+
+            <Slide title="Upto 80% off" products={products} />
 
         </div>
     )
