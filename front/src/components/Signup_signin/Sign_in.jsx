@@ -3,6 +3,10 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer, toast } from 'react-toastify';
+
 import "./Signup.css";
 
 const Sign_in = () => {
@@ -35,6 +39,46 @@ const Sign_in = () => {
 
 
 
+    const sendData = async (e) => {
+
+        e.preventDefault();
+
+        const { email, password } = indata;
+
+        const res = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email, password,
+            })
+        });
+
+
+        const data = await res.json();
+
+        console.log(data);
+
+        if (res.status === 400 || !data) {
+            // console.log("Invalid Details");
+
+            toast.warn("Invalid Details", { position: "top-center" })  // from tostify package
+
+        }
+        else {
+            // console.log("data Valid");
+
+            toast.success("Sign-in Seccessful", { position: "top-center" })  // from tostify package
+
+            setData({ ...indata, email: "", password: "" })
+        }
+
+
+
+
+    }
+
 
 
 
@@ -52,7 +96,7 @@ const Sign_in = () => {
                     </div>
 
                     <div className="sign_form">
-                        <form>
+                        <form method="POST" >
                             <h1>Sign-In</h1>
                             <div className="form_data">
                                 <label htmlFor="email">Email</label>
@@ -62,7 +106,7 @@ const Sign_in = () => {
                                 <label htmlFor="password">Password</label>
                                 <input type="password" onChange={addData} value={indata.password} name='password' id='password' placeholder='At least 6 Char' />
                             </div>
-                            <button className='signin_btn'>Continue</button>
+                            <button className='signin_btn' onClick={sendData} >Continue</button>
                         </form>
                     </div>
 
@@ -73,6 +117,9 @@ const Sign_in = () => {
 
 
                 </div>
+
+                <ToastContainer />
+
             </section>
 
         </>

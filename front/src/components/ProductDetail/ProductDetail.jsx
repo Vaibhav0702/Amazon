@@ -1,22 +1,36 @@
 
 
 import { Divider } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
+
+import { Logincontext } from "../Context/ContextProvider"
 
 import "./ProductDetail.css"
 
 const ProductDetail = () => {
 
+    const {account , setAccount} = useContext(Logincontext);
+
+
+    console.log( "Account : ", account);
+
+
+
 
     const { id } = useParams("");
 
-    const [singleProduct, setSingleProduct] = useState([]);
+    // console.log(id);
+
+ 
+
+
+    const [singleProduct, setSingleProduct] = useState("");
 
     console.log(singleProduct);
 
 
-    // console.log(id);
+
 
     const getData = async () => {
         const res = await fetch(`/product/${id}`, {
@@ -49,12 +63,65 @@ const ProductDetail = () => {
 
 
 
+    // add to cart function.......
+
+
+    const addtoCart = async (id) => {
+
+        console.log(id);
+
+        const checkres = await fetch(`/cart/${id}`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                singleProduct
+            }),
+            credentials: "include"
+
+
+        });
+
+        const data1 = await checkres.json();
+
+        console.log( "data1 : " ,data1)
+
+        if (checkres.status !== 201 || !data1) {
+            console.log("User Invalid");
+
+            alert("User Invalid")
+        }
+        else 
+        {
+
+            setAccount(data1)
+           
+             console.log("Account:" , account);
+
+            alert("Data Added to Cart");
+ 
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     return (
         <>
 
             <div className="cart_section">
 
-                { singleProduct && Object.keys(singleProduct).length &&  // if we have data then it will show
+                {singleProduct && Object.keys(singleProduct).length &&  // if we have data then it will show
 
                     <div className="cart_container">
 
@@ -64,7 +131,7 @@ const ProductDetail = () => {
 
                             <div className="cart_btn">
 
-                                <button className='cart_btn1'  >Add to Cart</button>
+                                <button className='cart_btn1' onClick={() => addtoCart(singleProduct.id)} >Add to Cart</button>
                                 <button className='cart_btn2'  >Buy Now</button>
                             </div>
 

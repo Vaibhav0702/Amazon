@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 
 import "./Navbar.css"
 
@@ -10,9 +10,19 @@ import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import Avatar from '@mui/material/Avatar';
+
 import { NavLink } from 'react-router-dom';
 
+import {  Logincontext } from "../Context/ContextProvider"
+
+
 const Navbar = () => {
+
+    const { account, setAccount } = useContext( Logincontext);
+    
+
+    console.log( "Account : ", account)
+
 
 
     return (
@@ -21,7 +31,7 @@ const Navbar = () => {
             <nav>
                 <div className='left'>
                     <div className="navlogo" >
-                     <NavLink to="/">  <img src="https://www.pngmart.com/files/Amazon-Logo-Download-PNG-Image.png" alt="logo" /> </NavLink>  
+                        <NavLink to="/">  <img src="https://www.pngmart.com/files/Amazon-Logo-Download-PNG-Image.png" alt="logo" /> </NavLink>
                     </div>
                     <div className="nav_searchbaar">
                         <input type="text" />
@@ -38,16 +48,16 @@ const Navbar = () => {
                             signin
                         </NavLink>
                     </div>
-                    
+
                     <NavLink to="/cart">
-                    <div className="cart_btn">
-                        <Badge badgeContent={4} color="primary">
-                            <ShoppingCartIcon id="icon" />
-                        </Badge>
-                        <p>
-                            Cart
-                        </p>
-                    </div>
+                        <div className="cart_btn">
+                            <Badge badgeContent={4} color="primary">
+                                <ShoppingCartIcon id="icon" />
+                            </Badge>
+                            <p>
+                                Cart
+                            </p>
+                        </div>
                     </NavLink>
 
                     <Avatar className='avtar' />
