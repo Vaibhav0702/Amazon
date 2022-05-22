@@ -2,15 +2,17 @@
 
 import { Divider } from '@mui/material'
 import React, { useEffect, useState, useContext } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 
 import { Logincontext } from "../Context/ContextProvider"
+
+import CircularProgress from '@mui/material/CircularProgress';
 
 import "./ProductDetail.css"
 
 const ProductDetail = () => {
 
-  
+
     const history = useNavigate()
 
 
@@ -19,10 +21,10 @@ const ProductDetail = () => {
 
     // console.log(id);
 
-    const {account , setAccount} = useContext(Logincontext);
+    const { account, setAccount } = useContext(Logincontext);
 
 
-    console.log( "Account : ", account);
+    console.log("Account : ", account);
 
 
 
@@ -54,14 +56,16 @@ const ProductDetail = () => {
             // console.log(getData);
 
             setSingleProduct(data);
-          
+
         }
 
     }
 
 
     useEffect(() => {
-        getData();
+
+        setTimeout( getData, 1000)
+      
     }, [id])
 
 
@@ -89,26 +93,25 @@ const ProductDetail = () => {
 
         const data1 = await checkres.json();
 
-        console.log( "data1 : " ,data1)
+        console.log("data1 : ", data1)
 
         if (checkres.status === 401 || !data1) {
             console.log("User Invalid");
 
             alert("User Invalid")
         }
-        else 
-        {
+        else {
 
-        
+
 
             alert("Data Added to Cart");
 
             history("/Cart")
 
             setAccount(data1)
-           
-            console.log("Account:" , account);
- 
+
+            console.log("Account:", account);
+
         }
 
     }
@@ -138,7 +141,10 @@ const ProductDetail = () => {
 
                             <div className="cart_btn">
 
-                                <button className='cart_btn1' onClick={() => addtoCart(singleProduct.id)} >Add to Cart</button>
+                                {
+                                    account ? <button className='cart_btn1' onClick={() => addtoCart(singleProduct.id)} >Add to Cart</button> : <NavLink to="/login" > <button className='cart_btn1' >Add to Cart</button></NavLink>
+                                }
+
                                 <button className='cart_btn2'  >Buy Now</button>
                             </div>
 
@@ -178,6 +184,22 @@ const ProductDetail = () => {
                     </div>
 
                 };
+
+
+
+
+
+                {!singleProduct ? <div className="circle">
+                    <CircularProgress />
+                    <h2> Loading....</h2>
+                </div> : ""}
+
+
+
+
+
+
+
 
 
             </div>

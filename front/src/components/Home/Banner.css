@@ -20,6 +20,12 @@ height: 700px;
         object-fit: cover;
       
     }
+    
+
+    .Banner_box{
+        
+        display: none;
+    }
 }
 
 

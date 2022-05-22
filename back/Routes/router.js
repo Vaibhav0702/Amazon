@@ -201,4 +201,37 @@ router.delete("/remove/:id", authenticate, async (req, res) => {
   }
 });
 
+// user Log out ..................
+
+router.get("/logOut", authenticate, async (req, res) => {
+  try {
+    req.rootUser.tokens = req.rootUser.tokens.filter((currentValue) => {
+      return currentValue.tokens !== req.token; // delete token
+    });
+
+    res.clearCookie("Amazon", { path: "/" }); // delete cookie and redirect to the home page
+
+    req.rootUser.save();
+
+    res.status(201).json(req.rootUser.tokens);
+    console.log("User LogOut");
+  } catch (err) {
+    console.log("Error in user logout");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
