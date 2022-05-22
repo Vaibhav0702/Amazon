@@ -13,7 +13,7 @@ import { Divider } from '@mui/material';
 import "./Rightheader.css";
 
 
-const Rightheader = ({ onClose , logOutUser }) => {
+const Rightheader = ({ onClose, logOutUser }) => {
 
     const { account, setAccount } = useContext(Logincontext);
 
@@ -31,22 +31,22 @@ const Rightheader = ({ onClose , logOutUser }) => {
 
             <div className="rightheader">
 
-                <div className="right_nav"  onClick={()=> onClose()}  >
+                <div className="right_nav" onClick={() => onClose()}  >
 
                     {
 
-                        account ? <Avatar  className='avtar2' >{account.fname[0].toUpperCase()}</Avatar> : <Avatar className='avtar' ></Avatar>
+                        account ? <Avatar className='avtar2' >{account.fname[0].toUpperCase()}</Avatar> : <Avatar className='avtar' ></Avatar>
 
                     }
 
                     {
-                        
+
                         account ? <h3> Hello , {account.fname.toUpperCase()}</h3> : ""
 
                     }
 
                 </div>
-                <div className="nav_btn" onClick={()=> onClose()} >
+                <div className="nav_btn" onClick={() => onClose()} >
 
                     <NavLink to="/"> Home </NavLink>
 
@@ -64,6 +64,13 @@ const Rightheader = ({ onClose , logOutUser }) => {
                     }
 
 
+                    <p>Fashion</p>
+                    <p>Customer Services</p>
+                    <p>Electronics</p>
+                    <p>Prime</p>
+
+                    <p>Amazon Pay</p>
+
                     <Divider style={{ width: "100%", marginLeft: "-20px" }} />
 
                     <div className="flag">
@@ -73,20 +80,17 @@ const Rightheader = ({ onClose , logOutUser }) => {
                         <img src="" alt="" />
 
                     </div>
+
                     <Divider style={{ width: "100%", marginLeft: "-20px" }} />
                     <div>
-                        
-                     
-                     {
-                         account ? <NavLink to="/" onClick={logOutUser} >  Log-Out </NavLink> : <NavLink to="/login"> Log-In </NavLink>
-                     }
 
-
-
-                    
-
-
+                        {
+                            account ? <NavLink to="/" onClick={logOutUser} >  Log-Out </NavLink> : <NavLink to="/login"> Log-In </NavLink>
+                        }
                     </div>
+
+
+
 
                 </div>
 

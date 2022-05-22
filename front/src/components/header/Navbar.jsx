@@ -274,7 +274,7 @@ const Navbar = () => {
 
                     <div className="nav_btn">
                         <NavLink to="/login">
-                            signin
+                           Sign - In
                         </NavLink>
                     </div>
 
