@@ -8,11 +8,17 @@ export const Contextprovider = ({ children }) => {
     const [account, setAccount] = useState("");
 
     return (
-    
+
+        <>
+
             <Logincontext.Provider value={{ account, setAccount }}>
                 {children}
             </Logincontext.Provider>
-        
+
+
+        </>
+
+
     )
 }
 

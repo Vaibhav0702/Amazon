@@ -10,6 +10,8 @@ const bcrypt = require("bcryptjs"); // bcryptjs.........
 
 const authenticate = require("../Middleware/authenticate");
 
+// get product........
+
 router.get("/getproducts", async (req, res) => {
   try {
     const productsData = await Products.find().lean().exec();
@@ -99,22 +101,21 @@ router.post("/login", async (req, res) => {
 
       // console.log(isMatch);
 
-      // Generate token ..................
-
-      const token = await userLogin.generateAuthtokenn();
-
-      // console.log(token);
-
-      res.cookie("Amazon", token, {
-
-        expires: new Date(Date.now() + 900000), // set cookie expire time 15min after generate.......
-
-        httpOnly: true,
-      }); //generate cookie .......
-
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Details" }); // if password incorrect show error...........
       } else {
+        // Generate token ..................
+
+        const token = await userLogin.generateAuthtokenn();
+
+        // console.log(token);
+
+        res.cookie("Amazon", token, {
+          expires: new Date(Date.now() + 900000), // set cookie expire time 15min after generate.......
+
+          httpOnly: true,
+        }); //generate cookie .......
+
         res.status(201).json({ userLogin }); // send user details to front ...............
       }
     } else {
@@ -139,10 +140,9 @@ router.post("/cart/:id", authenticate, async (req, res) => {
     // console.log(userDetails);
 
     if (userDetails) {
-
       const cartData = await userDetails.addDatatoCart(cart);
 
-      await userDetails.save();   // save data with updated cart
+      await userDetails.save(); // save data with updated cart
 
       // console.log(cartData);
 
@@ -152,6 +152,52 @@ router.post("/cart/:id", authenticate, async (req, res) => {
     }
   } catch (err) {
     console.log({ err: err.message });
+  }
+});
+
+// get Cart details ..................
+
+router.get("/cartDetails", authenticate, async (req, res) => {
+  try {
+    const buyUser = await USER.findOne({ _id: req.userID });
+
+    res.status(201).json(buyUser);
+  } catch (error) {
+    console.log("error" + error);
+  }
+});
+
+// get valid user ............
+
+router.get("/validUser", authenticate, async (req, res) => {
+  try {
+    const validUser = await USER.findOne({ _id: req.userID });
+
+    res.status(201).json(validUser);
+  } catch (error) {
+    console.log("error" + error);
+  }
+});
+
+// remove item from cart ...........
+
+router.delete("/remove/:id", authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    req.rootUser.carts = req.rootUser.carts.filter((currentValue) => {
+      return currentValue.id != id;
+    });
+
+    req.rootUser.save();
+
+    res.status(201).json(req.rootUser);
+
+    console.log("item Remove");
+  } catch (err) {
+    console.log("err" + err);
+
+    res.status(400).json(req.rootUser);
   }
 });
 

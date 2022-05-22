@@ -1,15 +1,25 @@
 
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 
+import { Logincontext } from '../Context/ContextProvider';
+
 import "./Signup.css";
 
 const Sign_in = () => {
+
+
+    const { account, setAccount } = useContext(Logincontext);
+
+
+
+
+
 
 
     const [indata, setData] = useState({
@@ -19,6 +29,9 @@ const Sign_in = () => {
 
 
     });
+
+
+
 
     const addData = (e) => {
 
@@ -56,20 +69,23 @@ const Sign_in = () => {
         });
 
 
-        const data = await res.json();
+        const data = await res.json();  // user data
 
-        console.log(data);
+        console.log( "Data : ", data);
 
         if (res.status === 400 || !data) {
             // console.log("Invalid Details");
 
-            toast.warn("Invalid Details", { position: "top-center" })  // from tostify package
+            toast.warn("Invalid Details 👎 ", { position: "top-center" })  // from tostify package
 
         }
         else {
             // console.log("data Valid");
 
-            toast.success("Sign-in Seccessful", { position: "top-center" })  // from tostify package
+            toast.success("Sign-in Seccessful 😃 ", { position: "top-center" })  // from tostify package
+
+            setAccount(data.userLogin);  // set userdata to Account
+
 
             setData({ ...indata, email: "", password: "" })
         }

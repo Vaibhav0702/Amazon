@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import "./Navbar.css"
 
@@ -13,16 +13,53 @@ import Avatar from '@mui/material/Avatar';
 
 import { NavLink } from 'react-router-dom';
 
-import {  Logincontext } from "../Context/ContextProvider"
+import { Logincontext } from "../Context/ContextProvider"
 
 
 const Navbar = () => {
 
-    const { account, setAccount } = useContext( Logincontext);
-    
+    const { account, setAccount } = useContext(Logincontext);
 
-    console.log( "Account : ", account)
 
+    console.log("Account : ", account)
+
+
+    const getvalidUser = async() => {
+
+       const res = await fetch("/validUser" , {
+            
+        method:"GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include"
+
+       })
+       
+       const data = await res.json();
+
+    //    console.log( "Data", data);
+
+      if(res.status !== 201)
+      {
+          console.log("error");
+      }
+      else
+      {
+          console.log("Vaild Data");
+
+          setAccount(data);
+      }
+
+    }
+   
+    useEffect(()=>{
+      
+        getvalidUser();
+
+
+    } , [])
 
 
     return (
@@ -49,18 +86,47 @@ const Navbar = () => {
                         </NavLink>
                     </div>
 
-                    <NavLink to="/cart">
-                        <div className="cart_btn">
-                            <Badge badgeContent={4} color="primary">
-                                <ShoppingCartIcon id="icon" />
-                            </Badge>
-                            <p>
-                                Cart
-                            </p>
-                        </div>
-                    </NavLink>
 
-                    <Avatar className='avtar' />
+                    <div className="cart_btn">
+
+
+                        {
+                            account ? 
+                            
+                            <NavLink to="/cart">
+
+                                <Badge badgeContent={account.carts.length} color="primary">
+                                    <ShoppingCartIcon id="icon" />
+                                </Badge>
+
+                            </NavLink> 
+                            
+                            : 
+                             
+                            <NavLink to="/login">
+
+                                <Badge badgeContent={0} color="primary">
+                                    <ShoppingCartIcon id="icon" />
+                                </Badge>
+
+                            </NavLink>
+                        }
+
+
+
+                        <p>
+                            Cart
+                        </p>
+                    </div>
+                    
+
+                    {
+                          
+                          account ?    <Avatar className='avtar2' >{account.fname[0].toUpperCase() }</Avatar> :  <Avatar className='avtar' ></Avatar>
+
+                    }
+
+                  
 
                 </div>
 

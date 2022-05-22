@@ -1,7 +1,7 @@
 
 
 import { Divider } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import "./Cart.css"
 import Option from './Option'
@@ -9,65 +9,134 @@ import Right from './Right'
 import Subtotal from './Subtotal'
 
 const Cart = () => {
+
+
+  const [cartData, setCartData] = useState("");
+
+  console.log("CartData", cartData);
+
+  const getCartData = async () => {
+
+    const res = await fetch("/cartDetails", {
+
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+
+
+    });
+
+    const data = await res.json();
+
+    if (res.status !== 201) {
+      console.log("error");
+    }
+    else {
+      setCartData(data.carts);
+    }
+
+  };
+
+
+  useEffect(() => {
+
+    getCartData();
+
+  }, []);
+
+
+
+
   return (
     <>
-    
+
+      {
+
+        cartData.length ?
+
           <div className="buynow_section">
-              
-                  <div className="buynow_container">
-                       
-                       <div className="left_buy">
-                         
-                         <h1>Shopping Cart</h1>
 
-                         <p>Select all item</p>
+            <div className="buynow_container">
 
-                         <span className='leftbuyprice'>Price</span>
+              <div className="left_buy">
 
-                         <Divider/>
+                <h1>Shopping Cart</h1>
+
+                <p>Select all item</p>
+
+                <span className='leftbuyprice'>Price</span>
+
+                <Divider />
+
+                {
+                  cartData.map((e, k) => {
+
+                    return (
 
 
-                         <div className="item_containert">
+                      <>
 
-                              <img src="https://images-eu.ssl-images-amazon.com/images/S/pv-target-images/7ced95368eb89af9ee93f6b2b6bb3d400a6be38024eac30f99f58abded933948._RI_V_TTW_QL40_AC_SL792_.jpg" alt="" />
-                               
-                            <div className="item_details">
-                            
-                            <h3>KGF</h3>
 
-                            <h3>Smart movie</h3>
+                        <div className="item_containert">
 
-                            <h3 className='diffrentprice'> rs 4090 </h3>
+                          <img src={e.url} alt="" />
 
-                             <p className='unusuall'>Usually dispatched in 8 days.</p>
+                          <div className="item_details">
 
-                             <p>Eligible for FREE Shipping</p>
+                            <h3>{e.title.longTitle}</h3>
+
+                            <h3>{e.title.shortTitle}</h3>
+
+                            <h3 className='diffrentprice'>₹{e.price.cost}</h3>
+
+                            <p className='unusuall'>Usually dispatched in 8 days.</p>
+
+                            <p>Eligible for FREE Shipping</p>
 
                             <img src="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png" alt="logo" />
 
 
-                            <Option/>
+                            <Option deleteData={e.id} get={getCartData} />     {/* pass id to delete option */}              
+    
+
+                          </div>
+
+                          <h3 className='item_price'> ₹{e.price.cost}</h3>
 
 
-                            </div>
+                        </div>
 
-                            <h3 className='item_price'>5892</h3>
+                        <Divider />
+
+                      </>
+                    )
 
 
-                         </div>
+                  })
+                }
 
-                         <Divider/>
 
-                          <Subtotal/>
+            
 
-                       </div>
+                <Subtotal item={cartData} />
 
-                        <Right/>
-                  </div>
+              </div>
+
+              <Right  item={cartData} />
+            </div>
 
 
           </div>
-    
+
+          :
+
+          ""
+
+      }
+
     </>
   )
 }

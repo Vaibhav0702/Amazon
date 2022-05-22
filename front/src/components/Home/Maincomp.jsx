@@ -13,13 +13,17 @@ import { getProducts } from "../Redux/action/action"
 import { useDispatch, useSelector } from "react-redux";
 
 
+
+
+
 const Maincomp = () => {
 
 
-    const { products } = useSelector(state => state.getProductsData);
+    const { products } = useSelector(state => state.getProductsData); // get6 product from redux store
 
 
     console.log(products);
+
 
 
     const dispatch = useDispatch();

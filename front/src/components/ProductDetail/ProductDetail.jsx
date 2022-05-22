@@ -2,7 +2,7 @@
 
 import { Divider } from '@mui/material'
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { Logincontext } from "../Context/ContextProvider"
 
@@ -10,11 +10,8 @@ import "./ProductDetail.css"
 
 const ProductDetail = () => {
 
-    const {account , setAccount} = useContext(Logincontext);
-
-
-    console.log( "Account : ", account);
-
+  
+    const history = useNavigate()
 
 
 
@@ -22,7 +19,11 @@ const ProductDetail = () => {
 
     // console.log(id);
 
- 
+    const {account , setAccount} = useContext(Logincontext);
+
+
+    console.log( "Account : ", account);
+
 
 
     const [singleProduct, setSingleProduct] = useState("");
@@ -33,6 +34,7 @@ const ProductDetail = () => {
 
 
     const getData = async () => {
+
         const res = await fetch(`/product/${id}`, {
 
             method: "GET",
@@ -52,6 +54,7 @@ const ProductDetail = () => {
             // console.log(getData);
 
             setSingleProduct(data);
+          
         }
 
     }
@@ -88,7 +91,7 @@ const ProductDetail = () => {
 
         console.log( "data1 : " ,data1)
 
-        if (checkres.status !== 201 || !data1) {
+        if (checkres.status === 401 || !data1) {
             console.log("User Invalid");
 
             alert("User Invalid")
@@ -96,11 +99,15 @@ const ProductDetail = () => {
         else 
         {
 
-            setAccount(data1)
-           
-             console.log("Account:" , account);
+        
 
             alert("Data Added to Cart");
+
+            history("/Cart")
+
+            setAccount(data1)
+           
+            console.log("Account:" , account);
  
         }
 
