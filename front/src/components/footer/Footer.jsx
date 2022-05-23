@@ -14,8 +14,8 @@ const Footer = () => {
 
     return (
         <footer>
-            
-          <NavLink to="/"> <button className='scroll'>Bact to top</button></NavLink>
+             <a href="#top"><button className='scroll'>Bact to top</button></a>
+          
 
           
 
