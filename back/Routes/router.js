@@ -46,7 +46,7 @@ router.get("/product/:id", async (req, res) => {
 router.post("/register", async (req, res) => {
   // console.log(req.body);
 
-  const { fname, email, mobile, password, Apassword } = req.body;
+  const { fname, email, mobile, password, Apassword , Address } = req.body;
 
   if (!fname || !email || !mobile || !password || !Apassword) {
     res.status(422).json({ error: " * fill all data " });
@@ -70,6 +70,7 @@ router.post("/register", async (req, res) => {
         mobile,
         password,
         Apassword,
+        Address,
       }); //generate new user.............
 
       // password hash process...........

@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken"); // jsonwebtoken........
 
 const secretKey = process.env.KEY; // KEY from .env ............
 
+
 const userSchema = new mongoose.Schema({
   fname: {
     type: String,
@@ -30,6 +31,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     maxlength: 10,
   },
+  Address:{
+    type:String,
+    required:true,
+  },
+
+
   password: {
     type: String,
     required: true,
@@ -41,6 +48,7 @@ const userSchema = new mongoose.Schema({
     minlength: 6,
   },
 
+
   tokens: [
     {
       token: {
@@ -51,6 +59,7 @@ const userSchema = new mongoose.Schema({
   ],
 
   carts: Array,
+  
 });
 
 // ---------------middleware to hash password.....

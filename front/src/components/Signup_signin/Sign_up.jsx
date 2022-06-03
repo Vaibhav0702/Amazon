@@ -19,7 +19,7 @@ const Sign_up = () => {
         mobile: "",
         password: "",
         Apassword: "",
-
+       Address:"",
 
     });
 
@@ -40,7 +40,7 @@ const Sign_up = () => {
 
         e.preventDefault();
 
-        const { fname, email, mobile, password, Apassword } = updata;
+        const { fname, email, mobile, password, Apassword , Address  } = updata;
 
         const res = await fetch("register", {
             method: "POST",
@@ -48,7 +48,7 @@ const Sign_up = () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                fname, email, mobile, password, Apassword
+                fname, email, mobile, password, Apassword , Address
             })
         })
 
@@ -79,6 +79,7 @@ const Sign_up = () => {
                 mobile: "",
                 password: "",
                 Apassword: "",
+                Address:"",
             })
         }
 
@@ -108,7 +109,7 @@ const Sign_up = () => {
                                     ...updata,
                                     fname: e.target.value
                                 })
-                            }} value={updata.fname} name='fname' id="fname" placeholder='Enter your Name' />
+                            }} value={updata.fname} name='fname' id="fname" placeholder='Enter your Name' required />
                         </div>
                         <div className="form_data">
                             <label htmlFor="email">Email</label>
@@ -117,7 +118,7 @@ const Sign_up = () => {
                                     ...updata,
                                     email: e.target.value
                                 })
-                            }} value={updata.email} name='email' id="email" placeholder='Enter your email' />
+                            }} value={updata.email} name='email' id="email" placeholder='Enter your email' required />
                         </div>
 
                         <div className="form_data">
@@ -127,8 +128,19 @@ const Sign_up = () => {
                                     ...updata,
                                     mobile: e.target.value
                                 })
-                            }} value={updata.mobile} name='mobile' id="mobile" placeholder='Enter your Number' />
+                            }} value={updata.mobile} name='mobile' id="mobile" placeholder='Enter your Number' required />
                         </div>
+
+                        <div className="form_data">
+                            <label htmlFor="Address">Address</label>
+                            <input type="Address" onChange={(e) => {
+                                setUpdata({
+                                    ...updata,
+                                    Address: e.target.value
+                                })
+                            }} value={updata.Address} name='Address' id='Address' placeholder='Enter Your Expected Delivery Address' required />
+                        </div>
+
                         <div className="form_data">
                             <label htmlFor="password">Password</label>
                             <input type="password" onChange={(e) => {
@@ -136,7 +148,7 @@ const Sign_up = () => {
                                     ...updata,
                                     password: e.target.value
                                 })
-                            }} value={updata.password} name='password' id='password' placeholder='At least 6 Char' />
+                            }} value={updata.password} name='password' id='password' placeholder='At least 6 Char' required />
                         </div>
 
                         <div className="form_data">
@@ -146,7 +158,7 @@ const Sign_up = () => {
                                     ...updata,
                                     Apassword: e.target.value
                                 })
-                            }} value={updata.Apassword} name='Apassword' id='password' />
+                            }} value={updata.Apassword} name='Apassword' id='password' required />
                         </div>
 
                         <button className='signin_btn' onClick={sendData} >Continue</button>

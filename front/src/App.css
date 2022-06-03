@@ -19,3 +19,7 @@ body{
 .circle> h2{
   margin-left: 20px;
 }
+
+body{
+  scroll-behavior: smooth;
+}

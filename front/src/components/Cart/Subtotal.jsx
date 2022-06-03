@@ -43,7 +43,7 @@ const Subtotal = ({ item }) => {
 
             <div className="sub_item">
 
-                <h3>Subtotal  [ {item.length} Items ] : <strong style={{ fontweight: "700", color: "#111" }}>  ₹{price} </strong> </h3>
+                <h3>Amount Payable  [ {item.length} Items ] : <strong style={{ fontweight: "700", color: "#111" }}>  ₹{price} </strong> </h3>
 
 
             </div>

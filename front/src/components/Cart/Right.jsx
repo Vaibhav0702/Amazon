@@ -1,6 +1,7 @@
 
 
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 const Right = ({ item }) => {
 
@@ -61,7 +62,11 @@ const Right = ({ item }) => {
 
                     <h3>Subtotal  [ {item.length} Items ] : <span style={{ fontWeight: 700 }}> ₹{price} </span></h3>
 
-                    <button className='rightbuy_btn'> Process to Buy</button>
+                    <NavLink to="/checkout" >
+                        <button className='rightbuy_btn'> Process to Buy</button>
+                    </NavLink>
+
+
                     <div className="emi">
                         EMI available
                     </div>

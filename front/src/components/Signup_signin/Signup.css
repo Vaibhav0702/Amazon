@@ -3,7 +3,7 @@
 section{
     position: relative;
     width: 100%;
-    top: 120px;
+    top: 110px;
     min-height:100vh;   
 }
 
@@ -26,6 +26,9 @@ section{
     padding: 10px 30px;
     margin-top: -10px;
     border-radius: 5px;
+    width: 45%;
+    margin: auto;
+    margin-bottom: 100px;
 }
 
 .sign_form h1{

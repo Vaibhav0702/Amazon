@@ -9,7 +9,7 @@ import { Provider as ReduxProvider } from "react-redux";
 
 import { BrowserRouter } from "react-router-dom";
 
-import {Contextprovider} from "./components/Context/ContextProvider";
+import { Contextprovider } from "./components/Context/ContextProvider";
 
 ReactDOM.render(
   <React.StrictMode>
