@@ -51,7 +51,10 @@ const Slide = ({ title, products }) => {
 
                 <div className="products_deal">
                     <h3>{title}</h3>
-                    <button className='view_btn' >View All</button>
+                    <NavLink to="/bestseller">
+                        <button className='view_btn' >View All</button>
+                    </NavLink>
+
                 </div>
 
 

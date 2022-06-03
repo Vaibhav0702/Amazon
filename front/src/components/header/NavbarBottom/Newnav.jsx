@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import "./Newnav.css"
 
@@ -13,7 +14,9 @@ const Newnav = () => {
                 <div className="left_data">
                     <p>All</p>
                     <p>Mobile</p>
-                    <p>Best Seller</p>
+                  <NavLink to="/bestseller">
+                  <p>Best Seller</p>
+                  </NavLink>
                     <p>Fashion</p>
                     <p>Customer Services</p>
                     <p>Electronics</p>

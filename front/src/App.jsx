@@ -19,7 +19,10 @@ import Cart from './components/Cart/Cart';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { useEffect, useState } from 'react';
+
 import CheckOutpage from './components/Checkout/CheckOutpage';
+
+import Besteller from './components/Bestseller';
 
 
 function App() {
@@ -67,6 +70,8 @@ function App() {
               <Route path='/Cart' element={<Cart />} />
 
               <Route path='/Checkout' element={<CheckOutpage/>} />
+
+              <Route path='/bestseller' element={<Besteller/>}  />
 
             </Routes>
 

@@ -5,6 +5,7 @@ export const getProducts = () => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+
     });
     const res = await data.json();
     console.log(res);
@@ -13,3 +14,11 @@ export const getProducts = () => async (dispatch) => {
     dispatch({ type: "FAILED_GET_PRODUCTS", payload: err.response });
   }
 };
+
+
+
+
+
+
+
+
