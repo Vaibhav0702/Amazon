@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react';
 import CheckOutpage from './components/Checkout/CheckOutpage';
 
 import Besteller from './components/Bestseller';
+import Payment from './components/Payment/Payment';
 
 
 function App() {
@@ -72,6 +73,8 @@ function App() {
               <Route path='/Checkout' element={<CheckOutpage/>} />
 
               <Route path='/bestseller' element={<Besteller/>}  />
+
+              <Route path='/payment' element={<Payment/>}  />
 
             </Routes>
 

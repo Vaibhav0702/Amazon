@@ -1,0 +1,43 @@
+
+
+.paymentbox{
+ 
+    border:1px solid red;
+    width: 70%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.payment{
+    border: 1px solid #c9c9c9;
+    padding: 10px 30px;
+
+    border-radius: 5px;
+  
+    margin: auto;
+
+    margin-bottom: 100px;
+}
+.PaymentTitle{
+    font-size: 25px;
+}
+
+thead{
+    color: gray;
+}
+table{
+    border: 1px solid blue;
+    /* width: 100%;
+    */
+}
+
+.td1{
+    width: 40%;
+}
+.td2{
+    width: 20%;
+}
+
+.td3{
+    width: 20%;
+}
