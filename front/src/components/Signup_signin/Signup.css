@@ -26,9 +26,24 @@ section{
     padding: 10px 30px;
     margin-top: -10px;
     border-radius: 5px;
-    width: 40%;
+    width: 35%;
     margin: auto;
     margin-bottom: 100px;
+}
+
+@media (max-width:768px){
+
+    .sign_form{
+        border: 1px solid #c9c9c9;
+        padding: 10px 30px;
+        margin-top: -10px;
+        border-radius: 5px;
+        width: 60%;
+        margin: auto;
+        margin-bottom: 100px;
+    }
+
+
 }
 
 .sign_form h1{

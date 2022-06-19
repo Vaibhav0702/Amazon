@@ -1,7 +1,7 @@
 
 
 import React, { useContext, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,7 +16,8 @@ const Sign_in = () => {
 
     const { account, setAccount } = useContext(Logincontext);
 
-
+  
+     const history= useNavigate();
 
 
 
@@ -88,6 +89,8 @@ const Sign_in = () => {
 
 
             setData({ ...indata, email: "", password: "" })
+
+            history("/")
         }
 
 

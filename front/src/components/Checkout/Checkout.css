@@ -1,6 +1,6 @@
 
 .Checkout_container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
    
     width: 90%;
     margin: auto;
@@ -9,13 +9,32 @@
 }
 
 .addressbox{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     padding: 10px;
     /* width: 30%; */
     border-radius: 20px;
     padding-left: 50px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  
+}
+
+
+.cart_btn2{
+    background-color: #FFA41C;
+    letter-spacing: .5px;
+    font-size: 14px;
+    color: #0F1111;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 200px;
+    box-shadow: 0 0 10px -5px rgba(0,0,0,.5);
+     margin: 40px;
+    padding: 10px;
+}
+.cart_btn2:hover{
+    background-color: #ec9615;
+    cursor: pointer;
 }
 
 

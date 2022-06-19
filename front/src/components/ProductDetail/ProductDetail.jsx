@@ -13,7 +13,7 @@ import "./ProductDetail.css"
 const ProductDetail = () => {
 
 
-    const history = useNavigate()
+    // const history = useNavigate()
 
 
 
@@ -106,7 +106,7 @@ const ProductDetail = () => {
 
             alert("Data Added to Cart");
 
-            history("/Cart")
+            // history("/Cart")
 
             setAccount(data1)
 
@@ -145,7 +145,9 @@ const ProductDetail = () => {
                                     account ? <button className='cart_btn1' onClick={() => addtoCart(singleProduct.id)} >Add to Cart</button> : <NavLink to="/login" > <button className='cart_btn1' >Add to Cart</button></NavLink>
                                 }
 
-                                <button className='cart_btn2'  >Buy Now</button>
+                                <NavLink  to="/cart"  >  <button className='cart_btn2'  >Buy Now</button> </NavLink>
+
+                               
                             </div>
 
                         </div>

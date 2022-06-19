@@ -24,6 +24,13 @@
     font-size: 13px;
 }
 
+.left_data > p:hover{
+    cursor: pointer;
+   color:yellow;
+}
+
+
+
 /* media query */
 @media (max-width:808px){
     .new_nav{

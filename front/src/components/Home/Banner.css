@@ -17,10 +17,16 @@ height: 700px;
 
 @media (max-width:768px){
     .banner_img{
-        object-fit: cover;
-      
+     
+     width:fit-content;
+       height: auto;
     }
-    
+   .carasousel{
+
+    margin-top: 10;
+     width: 100%;
+     height: fit-content;
+}
 
     .Banner_box{
         

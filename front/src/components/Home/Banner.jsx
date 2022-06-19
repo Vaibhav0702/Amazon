@@ -24,6 +24,8 @@ const data = [
 
 
 
+
+
 const Banner = () => {
 
 
@@ -32,7 +34,6 @@ const Banner = () => {
     return (
 
         <>
-
 
 
             <Carousel className='carasousel' autoPlay={true} infiniteLoop={true} showIndicators={false} showThumbs={false} showStatus={false} >
@@ -51,6 +52,10 @@ const Banner = () => {
 
 
             </Carousel>
+
+
+
+
 
 
             <div className="Banner_box">
@@ -203,16 +208,16 @@ const Banner = () => {
                         <img src="https://c4.wallpaperflare.com/wallpaper/71/805/151/movie-cap-pikachu-poster-pokemon-hd-wallpaper-preview.jpg" alt="" />
 
                         <div>
-                            <p style={{color:"white" ,fontSize:"30px" , fontWeight:"bold", padding:"10px", marginTop:"-97px", position:"relative", zIndex:"1", backgroundColor:"green" }} >
+                            <p style={{ color: "white", fontSize: "30px", fontWeight: "bold", padding: "10px", marginTop: "-97px", position: "relative", zIndex: "1", backgroundColor: "green" }} >
 
-                            Prime Video: Recommended for you
-                            
+                                Prime Video: Recommended for you
+
                             </p>
 
-                            <p style={{color:"white" ,fontStyle:"italic" ,fontSize:"20px" ,marginBottom:"0px" , fontWeight:"bold", padding:"10px", marginTop:"-45px", position:"relative", zIndex:"1", backgroundColor:"green" }} >
+                            <p style={{ color: "white", fontStyle: "italic", fontSize: "20px", marginBottom: "0px", fontWeight: "bold", padding: "10px", marginTop: "-45px", position: "relative", zIndex: "1", backgroundColor: "green" }} >
 
-                            The Detective Pikachu
-                            
+                                The Detective Pikachu
+
                             </p>
                         </div>
 

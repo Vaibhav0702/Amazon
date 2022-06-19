@@ -12,16 +12,23 @@ const Newnav = () => {
             <div className="nav_data">
 
                 <div className="left_data">
-                    <p>All</p>
-                    <p>Mobile</p>
+
+                <NavLink to="/bestseller"> <p>All</p> </NavLink>
+                    
+                    <NavLink to="/bestseller"> <p>Mobile</p> </NavLink>
+                    
                   <NavLink to="/bestseller">
                   <p>Best Seller</p>
                   </NavLink>
-                    <p>Fashion</p>
+                  <NavLink to="/bestseller">  <p>Fashion</p> </NavLink>
+                   
                     <p>Customer Services</p>
-                    <p>Electronics</p>
+                    
+                    <NavLink to="/bestseller">  <p>Electronics</p> </NavLink>
+                   
                     <p>Prime</p>
-                    <p>Today's Deal</p>
+                    <NavLink to="/bestseller"><p>Today's Deal</p></NavLink>
+                    
                     <p>Amazon Pay</p>
                 </div>
 

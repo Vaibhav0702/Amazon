@@ -30,7 +30,7 @@ const Besteller = () => {
 
     return (
         <div className="bestseller">
-            <div className='bestsellerH'><h1>Best Seller</h1></div>
+            {/* <div className='bestsellerH'><h1>Best Seller</h1></div> */}
             {products.map((el, i) => (
                 <NavLink to={`/product/${el.id}`}>
                     <div className="bestseller_container" key={i}>
