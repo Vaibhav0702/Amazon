@@ -35,13 +35,13 @@ const port = process.env.PORT || 8080;  // process.env.PORT ... get port after d
 
 
 
-//-----for heruku deployment
+// //-----for heruku deployment
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static("front/build"))
-}
+// if(process.env.NODE_ENV === "production"){
+//     app.use(express.static("front/build"))
+// }
 
-// -------------
+// // -------------
 
 
 
