@@ -31,11 +31,27 @@ app.use(cors());
 app.use(router);
 
 
-const port = 8080;
+const port = process.env.PORT || 8080;  // process.env.PORT ... get port after deployment 
+
+
+
+//-----for heruku deployment
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static("front/build"))
+}
+
+// -------------
+
+
+
+
+
+
+
+
 
 app.listen(port,()=>{
-
-
 
 console.log(`listen on server ${port} `);
 
